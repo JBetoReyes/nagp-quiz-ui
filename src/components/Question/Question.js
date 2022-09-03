@@ -10,7 +10,7 @@ const Question = ({
 }) => {
   return (
     <div className="question-container">
-      {showScore ? (
+      {showScore || !question ? (
         <div className="score-section">You scored {score} of {questionsNumber}</div>
       ) : (
         <>
@@ -18,13 +18,13 @@ const Question = ({
             <div className="question-count">
               <span>Question {questionCount}</span>/{questionsNumber}
             </div>
-            <div className="question-text">{question.questionText}</div>
+            <div className="question-text">{question.text}</div>
           </div>
           <div className="answer-section">
-            {question.answerOptions.map(({ answerText, isCorrect }, index) => {
+            {question.answers.map((answer, index) => {
               return (
-                <button key={index} onClick={() => onClickAnswer(isCorrect)}>
-                  {answerText}
+                <button key={index} onClick={() => onClickAnswer(question.correctAnswerIndex === index)}>
+                  {answer}
                 </button>
               );
             })}
