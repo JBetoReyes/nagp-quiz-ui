@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: quiz-ui
-        image: jbetoreyes/quiz-ui:0.1
+        image: jbetoreyes/quiz-ui:0.0.2
         imagePullPolicy: Always
         ports:
         - name: http
