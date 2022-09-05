@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quiz-app
+  namespace: quiz-app
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/subnets: subnet-07343f0c69e09cf8d,subnet-0b12c00a571ad584c
+    alb.ingress.kubernetes.io/tag: Environment=dev,Team=test
+spec:
+  ingressClassName: alb
+  rules:
+    - host: k8s-quizapp-quizapp-c1ebdc4b06-59709879.us-west-1.elb.amazonaws.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix 
+            backend:
+              service:
+                name: quiz-ui
+                port:
+                  number: 80
+          - path: /quizzes
+            pathType: Exact
+            backend:
+              service:
+                name: quiz-api
+                port:
+                  number: 80
