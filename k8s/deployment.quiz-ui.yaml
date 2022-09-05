@@ -3,6 +3,7 @@ kind: Deployment
 
 metadata:
   name: quiz-ui
+  namespace: quiz-app
   labels:
     app: quiz-ui
     rel: stable
@@ -23,7 +24,7 @@ spec:
     spec:
       containers:
       - name: quiz-ui
-        image: jbetoreyes/quiz-ui:0.0.2
+        image: jbetoreyes/quiz-ui:0.0.5
         imagePullPolicy: Always
         ports:
         - name: http
