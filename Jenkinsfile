@@ -26,7 +26,8 @@ pipeline {
     stage('Deployment') {
       steps {
         container('bitnami') {
-            sh 'kubectl apply -f k8s/service.quiz-ui.yaml'
+            sh 'sleep 180'
+            // sh 'kubectl apply -f k8s/service.quiz-ui.yaml'
         }
       }
     }
