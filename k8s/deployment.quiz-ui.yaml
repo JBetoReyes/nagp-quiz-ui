@@ -15,6 +15,12 @@ spec:
       app: quiz-ui
       rel: stable
   
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 1
+  
   template:
     metadata:
       labels:
