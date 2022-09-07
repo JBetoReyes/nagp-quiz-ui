@@ -1,7 +1,7 @@
-import { useState } from "react";
-import Question from "./components/Question/Question";
-import {useFetchQuestions} from "./hooks/useFetchQuestions";
-import "./App.css";
+import { useState } from 'react';
+import Question from './components/Question/Question';
+import { useFetchQuestions } from './hooks/useFetchQuestions';
+import './App.css';
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -10,7 +10,7 @@ function App() {
   const [questions] = useFetchQuestions();
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect) {
-      setCurrScore(score => score + 1)
+      setCurrScore((score) => score + 1);
     }
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion((currQuestion) => currQuestion + 1);
