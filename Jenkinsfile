@@ -53,7 +53,7 @@ pipeline {
       steps {
         container('dind') {
           script {
-            dockerImage = docker.build("jbetoreyes/quiz-ui:latest", "-f Dockerfile.prod")
+            dockerImage = docker.build("jbetoreyes/quiz-ui:latest", "-f Dockerfile.prod .")
           }
         }
       }
