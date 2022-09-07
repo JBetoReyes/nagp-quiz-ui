@@ -1,4 +1,8 @@
 pipeline {
+  environment {
+    dockerImage = ''
+    GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+  }
   agent {
     kubernetes {
       yamlFile 'k8s/pod.jenkins-agent.yaml'
@@ -50,6 +54,18 @@ pipeline {
         container('dind') {
           script {
             dockerImage = docker.build("jbetoreyes/quiz-ui:latest", "-f Dockerfile.prod")
+          }
+        }
+      }
+    }
+    stage('Docker Push') {
+      steps {
+        container('dind') {
+          script {
+            docker.withRegistry('', 'docker-hub-integration') {
+              dockerImage.push()
+              dockerImage.push("${GIT_COMMIT_HASH}")
+            }
           }
         }
       }
