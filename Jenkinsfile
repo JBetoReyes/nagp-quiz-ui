@@ -5,7 +5,7 @@ pipeline {
         apiVersion: v1
         kind: Pod
         metadata:
-          namespace: quiz-app
+          namespace: jenkins
           labels:
             some-label: some-label-value
         spec:
