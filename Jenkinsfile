@@ -38,6 +38,22 @@ pipeline {
         }
       }
     }
+    stage('Build') {
+      steps {
+        container('node') {
+          sh 'npm run build'
+        }
+      }
+    }
+    stage('Docker Build') {
+      steps {
+        container('dind') {
+          script {
+            dockerImage = docker.build("jbetoreyes/quiz-ui:latest", "-f Dockerfile.prod")
+          }
+        }
+      }
+    }
     stage('Deployment') {
       steps {
         container('bitnami') {
