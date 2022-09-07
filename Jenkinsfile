@@ -15,7 +15,12 @@ pipeline {
     stage('Test') {
       steps {
         container('node') {
-            sh 'CI=true npm run test'
+          sh 'CI=true npm run test'
+          publishHTML(target: [
+            reportDir: 'coverage/lcov-report',
+            reportFiles: 'index.html',
+            reportName: 'api coverage'
+          ])
         }
       }
     }
