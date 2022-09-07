@@ -6,13 +6,12 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/subnets: subnet-07343f0c69e09cf8d,subnet-0b12c00a571ad584c
+    alb.ingress.kubernetes.io/subnets: subnet-0262969f4da1625b3,subnet-0fc18dc62ba50cdf6
     alb.ingress.kubernetes.io/tag: Environment=dev,Team=test
 spec:
   ingressClassName: alb
   rules:
-    - host: k8s-quizapp-quizapp-c1ebdc4b06-59709879.us-west-1.elb.amazonaws.com
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix 
