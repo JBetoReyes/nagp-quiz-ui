@@ -11,7 +11,8 @@ body {
 }
 
 body {
-  background-color: #7cc6fe;
+  /* background-color: #7cc6fe; */
+  background-color: #41c01d;
   display: flex;
   justify-content: center;
   align-items: center;
