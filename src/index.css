@@ -11,8 +11,7 @@ body {
 }
 
 body {
-  /* background-color: #7cc6fe; */
-  background-color: blue;
+  background-color: #7cc6fe;
   display: flex;
   justify-content: center;
   align-items: center;
