@@ -5,7 +5,14 @@ pipeline {
     }
   }
   stages {
-    stage('test') {
+    stage('Install') {
+      steps {
+        container('node') {
+          sh 'npm install'
+        }
+      }
+    }
+    stage('Test') {
       steps {
         container('node') {
             sh 'CI=true npm run test'
